@@ -4,4 +4,4 @@ You can see the compilations process:
 $ vagrant ssh
 $ sudo screen -r
 
-The packages will be located in /opt/mapnik-rpms
+The packages will be located in the "rpms/" folder.
