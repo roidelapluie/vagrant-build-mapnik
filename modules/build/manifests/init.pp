@@ -26,10 +26,9 @@ class build {
       require => [File['/usr/local/bin/build_mapnik.sh'], Exec['extract mapnik']],
 
   }
-
   notify {
     'see mapnik':
-      message => 'To see mapnik compilation, log in as root and run screen -r',
-      require => Exec ['build mapnik']
+      message  => 'To see mapnik compilation, log in as vagrant and run sudo screen -r',
+      require  => Exec ['build mapnik'],
   }
 }
