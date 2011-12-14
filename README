@@ -4,13 +4,4 @@ You can see the compilations process:
 $ vagrant ssh
 $ sudo screen -r
 
-Once it is done, run the following commands inside the vagrant box:
-$ sudo -i
-# cd /opt/mapnik-2.0.0/
-# python scons/scons.py install
-# fpm -s dir -n mapnik -v 2.0.0 --iteration $(read -p 'Release number: ' num; echo $num) -C /opt/mapnik-install/ -t rpm --prefix /usr --url http://mapnik.org/ --description "Mapnik is a Free Toolkit for developing mapping applications."
-
-You will be prompted for a Release number. It is the release number of the RPM.
-
-Your rpm is /opt/mapnik-2.0.0/mapnik-2.0.0-$RELEASE.x86_64.rpm
-
+The packages will be located in /opt/mapnik-rpms

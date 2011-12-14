@@ -14,18 +14,17 @@ class build {
       creates => '/opt/mapnik-2.0.0',
       require => Exec['get mapnik'],
   }
-  exec {
-    'configure mapnik':
-      command => '/usr/bin/python scons/scons.py configure PREFIX=/opt/mapnik-install',
-      cwd     => '/opt/mapnik-2.0.0',
-      require => [Exec['extract mapnik'], File['mapnik install']],
-
+  file {
+    '/usr/local/bin/build_mapnik.sh':
+      source => 'puppet:///modules/build/build_mapnik.sh',
+      mode   => '0755',
   }
   exec {
     'build mapnik':
-      command => '/usr/bin/screen -d -m /usr/bin/python scons/scons.py',
+      command => '/usr/bin/screen -d -m /usr/local/bin/build_mapnik.sh',
       cwd     => '/opt/mapnik-2.0.0',
-      require => Exec['configure mapnik'],
+      require => [File['/usr/local/bin/build_mapnik.sh'], Exec['extract mapnik']],
+
   }
 
   notify {
